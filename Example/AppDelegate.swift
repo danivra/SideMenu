@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configureSideMenu() {
         SideMenuController.preferences.basic.menuWidth = 240
         SideMenuController.preferences.basic.defaultCacheKey = "0"
+        SideMenuController.preferences.basic.contentVerticalPadding = 100
+        SideMenuController.preferences.basic.contentCornerRadius = 38
     }
 
 }

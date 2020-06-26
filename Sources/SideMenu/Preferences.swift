@@ -116,6 +116,10 @@ extension SideMenuController {
             
             /// The side menu shouldAutorotate. Default is `true`.
             public var shouldAutorotate: Bool = true
+
+            public var contentCornerRadius: CGFloat = 0
+            
+            public var contentVerticalPadding: CGFloat = 0
         }
 
         /// The basic configuration of side menu

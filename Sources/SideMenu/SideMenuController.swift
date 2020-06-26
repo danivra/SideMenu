@@ -262,6 +262,11 @@ open class SideMenuController: UIViewController {
             if self.shouldShowShadowOnContent {
                 self.contentContainerOverlay?.alpha = reveal ? self.preferences.animation.shadowAlpha : 0
             }
+
+            if self.preferences.basic.contentCornerRadius != 0 {
+              self.contentContainerView.layer.cornerRadius = reveal ? self.preferences.basic.contentCornerRadius : 0
+              self.contentContainerView.layer.masksToBounds = true
+            }
         }
 
         let animationCompletionClosure: (Bool) -> Void = { finish in
@@ -695,6 +700,8 @@ open class SideMenuController: UIViewController {
             if visibility {
                 let factor: CGFloat = adjustedDirection == .left ? 1 : -1
                 baseFrame.origin.x = preferences.basic.menuWidth * factor
+                baseFrame.origin.y += preferences.basic.contentVerticalPadding
+                baseFrame.size.height -= preferences.basic.contentVerticalPadding * 2
             } else {
                 baseFrame.origin.x = 0
             }
