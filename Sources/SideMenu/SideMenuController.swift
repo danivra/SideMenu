@@ -607,7 +607,9 @@ open class SideMenuController: UIViewController {
 
             addChild(viewController)
 
-            viewController.view.frame = view.bounds
+            var newFrame = view.bounds
+            newFrame.size.height -= preferences.basic.contentVerticalPadding * 2
+            viewController.view.frame = newFrame
             viewController.view.translatesAutoresizingMaskIntoConstraints = true
             viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
@@ -636,6 +638,7 @@ open class SideMenuController: UIViewController {
                 // `contentViewController` setter won't trigger due to the `viewController` already is added to the hierarchy.
                 // `shouldCallSwitchingDelegate` also prevent the delegate from been calling.
                 self.contentViewController = viewController
+
                 self.shouldCallSwitchingDelegate = true
 
                 self.delegate?.sideMenuController(self, didShow: viewController, animated: animated)
